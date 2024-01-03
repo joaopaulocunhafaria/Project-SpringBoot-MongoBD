@@ -1,20 +1,22 @@
 package com.joao.springproject.resources;
 
+import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.joao.springproject.DTO.UserDto;
 import com.joao.springproject.Services.UserService;
 import com.joao.springproject.entites.User;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
 
 @RestController
 @RequestMapping("/users")
@@ -41,5 +43,15 @@ public class UserResource {
 
         return ResponseEntity.ok().body(usrDto);
     }
+
+    @PostMapping
+    public ResponseEntity<Void> postUser(@RequestBody UserDto user) {
+        User newUser= service. fromDto(user);
+        newUser=  service.insertUser(newUser);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newUser.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+
+    }
+    
 
 }
