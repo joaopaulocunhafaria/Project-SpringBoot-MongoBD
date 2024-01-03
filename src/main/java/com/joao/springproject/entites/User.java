@@ -1,9 +1,11 @@
 package com.joao.springproject.entites;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -14,7 +16,8 @@ public class User implements Serializable {
     @Id
     private String id;
     private String email;
-    private Set<Post> posts;
+    @DBRef(lazy=false)
+    private Set<Post> posts= new HashSet();
 
 
     public User(String name, String id, String email) {
@@ -22,6 +25,23 @@ public class User implements Serializable {
         this.id = id;
         this.email = email;
     }
+
+
+   
+
+    public Set<Post> getPosts() {
+        return posts;
+    }
+
+
+
+
+    public void setPosts(Set<Post> posts) {
+        this.posts = posts;
+    }
+
+
+
 
     public String getName() {
         return name;
