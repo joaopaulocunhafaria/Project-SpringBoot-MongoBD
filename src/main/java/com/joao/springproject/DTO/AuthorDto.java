@@ -6,30 +6,32 @@ import com.joao.springproject.entites.User;
 import org.springframework.data.annotation.Id;
 
 public class AuthorDto implements Serializable {
-    private static final Long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private String name;
-    private String id;
+	private String id;
+	private String name;
 
-    public AuthorDto(User usr) {
-        this.name = usr.getName();
-        this.id = usr.getId();
-    }
+	public AuthorDto() {
+	}
 
-    public String getName() {
-        return name;
-    }
+	public AuthorDto(User obj) {
+		id = obj.getId();
+		name = obj.getName();
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getId() {
+		return id;
+	}
 
-    public String getId() {
-        return id;
-    }
+	public void setId(String id) {
+		this.id = id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 }
