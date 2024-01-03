@@ -5,43 +5,31 @@ import java.io.Serializable;
 import com.joao.springproject.entites.User;
 import org.springframework.data.annotation.Id;
 
-public class UserDto implements Serializable {
-    private static final Long serialVersionUID = 1L; 
-    
-
+public class AuthorDto implements Serializable {
+    private static final Long serialVersionUID = 1L;
 
     private String name;
     private String id;
-    private String email;
 
-    public UserDto(){}
-    public UserDto(User user){
-        this.name=user.getName();
-        this.email = user.getEmail();
-        this.id = user.getId();
-
+    public AuthorDto(User usr) {
+        this.name = usr.getName();
+        this.id = usr.getId();
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-
-
-   
 
 }

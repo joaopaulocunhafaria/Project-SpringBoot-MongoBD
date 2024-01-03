@@ -7,6 +7,8 @@ import java.text.SimpleDateFormat;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.joao.springproject.DTO.AuthorDto;
+
 @Document
 public class Post implements Serializable {
     private static final Long serialVersionUID = 1L;
@@ -15,7 +17,7 @@ public class Post implements Serializable {
     private String body;
     private String title;
     private Date date;
-    private User author;
+    private AuthorDto author;
 
     public Post() {
     }
@@ -23,7 +25,7 @@ public class Post implements Serializable {
 
     
 
-    public Post( String body, String title, Date date, User author) {
+    public Post( String body, String title, Date date, AuthorDto author) {
        
         this.body = body;
         this.title = title;
@@ -81,7 +83,7 @@ public class Post implements Serializable {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        if (obj == null)
+        if (obj == null)                        
             return false;
         if (getClass() != obj.getClass())
             return false;
