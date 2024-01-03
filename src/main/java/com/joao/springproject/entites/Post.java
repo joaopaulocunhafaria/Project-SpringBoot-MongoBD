@@ -1,13 +1,15 @@
 package com.joao.springproject.entites;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
-import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.joao.springproject.DTO.AuthorDto;
+import com.joao.springproject.DTO.CommentDto;
 
 @Document
 public class Post implements Serializable {
@@ -18,6 +20,7 @@ public class Post implements Serializable {
     private String title;
     private Date date;
     private AuthorDto author;
+    private List<CommentDto> comments  = new ArrayList<>();
 
     public Post() {
     }
@@ -35,6 +38,20 @@ public class Post implements Serializable {
 
 
 
+
+
+
+
+    public List<CommentDto> getComments() {
+        return comments;
+    }
+
+
+
+
+    public void setComments(List<CommentDto> comments) {
+        this.comments = comments;
+    }
 
 
 
