@@ -22,21 +22,34 @@ public class UserService {
     }
 
     public User findById(String id) {
-		Optional<User> obj = repository.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFounException("Objeto não encontrado"));
-	}
-
-    public User insertUser(User obj){
-        return repository.insert(obj);  
+        Optional<User> obj = repository.findById(id);
+        return obj.orElseThrow(() -> new ObjectNotFounException("Objeto não encontrado"));
     }
 
-    public User fromDto(UserDto usr){
-        return new User(usr.getName(),usr.getId() ,usr.getEmail());
+    public User insertUser(User obj) {
+        return repository.insert(obj);
     }
 
-    public User deleteUser(String id){
+    public User fromDto(UserDto usr) {
+        return new User(usr.getName(), usr.getId(), usr.getEmail());
+    }
+
+    public User deleteUser(String id) {
         User usr = findById(id);
         repository.delete(usr);
         return usr;
+    }
+
+    public User updateUser(User usr) {
+        User userToBeUpdate = findById(usr.getId());
+        updateData(userToBeUpdate, usr);
+       
+        return  repository.save(userToBeUpdate);
+    }
+
+    public void updateData(User usertBeUpdate,User usr) {
+      usertBeUpdate.setEmail(usr.getEmail());
+      usertBeUpdate.setName(usr.getName());
+
     }
 }
