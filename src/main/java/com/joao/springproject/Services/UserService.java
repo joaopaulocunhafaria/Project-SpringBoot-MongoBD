@@ -33,4 +33,10 @@ public class UserService {
     public User fromDto(UserDto usr){
         return new User(usr.getName(),usr.getId() ,usr.getEmail());
     }
+
+    public User deleteUser(String id){
+        User usr = findById(id);
+        repository.delete(usr);
+        return usr;
+    }
 }
