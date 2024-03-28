@@ -13,7 +13,7 @@
  <h4>Posts</h4>
  <p>
  A primeira entidade a com a qual o sistema tem de lidar sao com os <strong>"posts"</strong> que serao criados, atualizados e/ou deletados. O prototipo final do objeto <strong>"posts"</strong> tem todas as caracteristicas de dados e metadados que sao necessarios para melhorar gerir e lidar com tal entidade afim de que se  torne facil localizar quando se deu a sua origem e atraves de quem.</p>
- <img src="">
+ <img src="https://github.com/joaopaulocunhafaria/Project-SpringBoot-MongoBD/assets/138056835/5c45a6be-e063-42e1-8c94-d22cb05017b7">
 </li>
 </ul>
 </ul>
