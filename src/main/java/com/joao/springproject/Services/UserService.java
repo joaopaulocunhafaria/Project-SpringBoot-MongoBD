@@ -27,7 +27,7 @@ public class UserService {
     }
 
     public User insertUser(User obj) {
-        return repository.insert(obj);
+        return repository.save(obj);
     }
 
     public User fromDto(UserDto usr) {
